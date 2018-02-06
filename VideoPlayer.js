@@ -426,8 +426,8 @@ export default class VideoPlayer extends Component {
    */
   calculateTime() {
     if (this.state.showTimeRemaining) {
-      const time = this.state.duration - this.state.currentTime;
-      return `-${this.formatTime(time)}`;
+      const time = this.state.currentTime;
+      return `${this.formatTime(time)}`;
     }
 
     return this.formatTime(this.state.currentTime);
@@ -935,7 +935,7 @@ export default class VideoPlayer extends Component {
           style={{
             alignSelf: "center",
             justifyContent: "center",
-            height: 480
+            flex: 0.9
           }}
         >
           {!this.state.loading ? playPauseControl : null}
@@ -946,11 +946,31 @@ export default class VideoPlayer extends Component {
           imageStyle={[styles.controls.vignette]}
         >
           <View
-            style={[styles.controls.row, styles.controls.bottomControlGroup]}
+            style={{
+              flexDirection: "row",
+              justifyContent: "space-between",
+              width: "100%"
+            }}
           >
             {this.renderTitle()}
             {timerControl}
-            {fullscreenControl}
+            <View
+              style={{
+                flexDirection: "row"
+              }}
+            >
+              <Text
+                style={{
+                  color: "white",
+                  alignSelf: "center",
+                  fontSize: 11,
+                  fontFamily: "IRANSans(FaNum)"
+                }}
+              >
+                {`${this.formatTime(this.state.duration)}`}
+              </Text>
+              {fullscreenControl}
+            </View>
           </View>
           {seekbarControl}
         </ImageBackground>
@@ -1299,7 +1319,8 @@ const styles = {
       backgroundColor: "transparent",
       color: "#FFF",
       fontSize: 11,
-      textAlign: "right"
+      fontFamily: "IRANSans(FaNum)",
+      textAlign: "left"
     }
   }),
   volume: StyleSheet.create({

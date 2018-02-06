@@ -1,8 +1,8 @@
 {
-  "name": "awesome-react-native-video-controls",
-  "version": "1.0.7",
+  "name": "khabargardi-video-controll",
+  "version": "1.0.2",
   "description":
-    "Editting some controls of react-native-video-controls and improve its functionality",
+    "Editting some controls of react-native-video-controls and improve its functionality and some change on the designe",
   "license": "MIT",
   "main": "VideoPlayer.js",
   "keywords": [
@@ -14,10 +14,10 @@
   "scripts": {
     "test": "echo \"No test specified\" && exit 1"
   },
-  "author": "Shahryar (https://github.com/sh-soltanpour)",
+  "author": "mehdi (https://github.com/TheIdhem)",
   "repository": {
     "type": "git",
-    "url": "git@github.com:sh-soltanpour/react-native-video-controls.git"
+    "url": "git@github.com:pegahtech/khabargardi-video-control.git"
   },
   "dependencies": {
     "lodash": "^4.16.4"
@@ -25,5 +25,8 @@
   "peerDependencies": {
     "react-native": ">=0.46.0",
     "react-native-video": "^2.0.0"
+  },
+  "rnpm": {
+    "assets": ["./assets/fonts/"]
   }
 }
