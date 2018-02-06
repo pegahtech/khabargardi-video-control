@@ -896,9 +896,15 @@ export default class VideoPlayer extends Component {
     let source =
       this.props.isFullscreen === true
         ? require("./assets/img/my_shrink.png")
-        : require("./assets/img/my_expand.png");
+        : require("./assets/img/FullScreenButton.png");
     return this.renderControl(
-      <Image source={source} />,
+      <Image
+        source={source}
+        style={{
+          width: 15,
+          height: 15
+        }}
+      />,
       this.methods.toggleFullscreen,
       styles.controls.fullscreen
     );
@@ -938,7 +944,7 @@ export default class VideoPlayer extends Component {
             flex: 0.9
           }}
         >
-          {!this.state.loading ? playPauseControl : null}
+          {!this.state.loading && !this.state.error ? playPauseControl : null}
         </View>
         <ImageBackground
           source={require("./assets/img/bottom-vignette.png")}
@@ -956,7 +962,9 @@ export default class VideoPlayer extends Component {
             {timerControl}
             <View
               style={{
-                flexDirection: "row"
+                flexDirection: "row",
+                justifyContent: "center",
+                alignSelf: "center"
               }}
             >
               <Text
@@ -1021,10 +1029,10 @@ export default class VideoPlayer extends Component {
   renderPlayPause() {
     let source =
       this.state.paused === true
-        ? require("./assets/img/play.png")
-        : require("./assets/img/pause.png");
+        ? require("./assets/img/PlayButton.png")
+        : require("./assets/img/PauseButton.png");
     return this.renderControl(
-      <Image source={source} />,
+      <Image source={source} style={{ height: 50, width: 50 }} />,
       this.methods.togglePlayPause,
       styles.controls.playPause
     );
@@ -1352,8 +1360,10 @@ const styles = {
   seekbar: StyleSheet.create({
     container: {
       alignSelf: "stretch",
-      height: 30,
-      marginRight: 12
+      height: 40,
+      width: null,
+      marginRight: 12,
+      marginLeft: 12
     },
     track: {
       backgroundColor: "#333",
